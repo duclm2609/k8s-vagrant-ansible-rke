@@ -1,0 +1,44 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+  - name: Upgrade the OS (apt-get dist-upgrade)
+    apt:
+      upgrade: dist
+  - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+#  - name: Create a volume group on top of /dev/sda with physical extent size = 32MB
+#    community.general.lvg:
+#      vg: data
+#      pvs: /dev/sda
+#      pesize: 32
+#  - name: Create a logical volume of 15GiB
+#    community.general.lvol:
+#      vg: data
+#      lv: docker
+#      size: 100%FREE
+#  - name: Create a ext4 filesystem on /dev/data/docker
+#    community.general.filesystem:
+#      fstype: ext4
+#      dev: /dev/data/docker
+#  - name: mount the lv on /var/lib/docker
+#    mount:
+#      path: /var/lib/docker
+#      src: /dev/data/docker
+#      fstype: ext4
+#      state: mounted
+#  roles:
+#    - geerlingguy.ntp
+#    - geerlingguy.docker
+  tasks:
+#    - name: Add the user 'vagrant' to group 'docker'
+#      provision.builtin.user:
+#        name: vagrant
+#        groups: docker
+#        append: yes
+    # Calico minimum kernal requirement check
+    - name: Ensure Calico minimum kernel modules requirement
+      modprobe:
+
