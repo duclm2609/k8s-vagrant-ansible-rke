@@ -1,0 +1,17 @@
+# Calico minimum system requirement
+calico_kernel_modules:
+  - ip_set
+  - ipt_ipvs
+  - ipt_REJECT
+  - nf_conntrack_netlink
+  - xt_mark
+  - xt_multiport
+  - xt_u32
+  - ip_tables
+  - ipt_rpfilter
+  - xt_addrtype
+  - xt_conntrack
+  - ip6_tables
+  - vfio-pci
+  - xt_bpf
+  - ipt_set

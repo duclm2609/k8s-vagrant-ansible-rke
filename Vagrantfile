@@ -63,8 +63,8 @@ Vagrant.configure("2") do |config|
         end
         # node.disksize.size = "30GB"
         node.vm.provision "ansible" do |ansible|
-            ansible.galaxy_role_file = "requirements.yml"
-            ansible.playbook = "playbook.yml"
+            ansible.galaxy_role_file = "provision/requirements.yml"
+            ansible.playbook = "provision/playbook.yml"
             ansible.extra_vars = {
                 ntp_timezone: "Asia/Ho_Chi_Minh"
             }
